@@ -15,11 +15,7 @@ class IndexComponent extends Component {
   }
   render() {
     return (
-<<<<<<< HEAD
       <Calendar startDate={new Date(2017, 3, 8)} onPressDate={this.onPressDate}></Calendar>
-=======
-      <Calendar startDate={new Date()}></Calendar>
->>>>>>> c6151ca7730c092a631e8f0232c8c12fa22573d9
     );
   }
 }
