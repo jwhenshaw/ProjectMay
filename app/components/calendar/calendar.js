@@ -48,7 +48,10 @@ class Calendar extends Component {
    * return int
    */
   getStartDayIndex() {
+<<<<<<< HEAD
     console.log(`startDate: ${this.props.startDate}`);
+=======
+>>>>>>> c6151ca7730c092a631e8f0232c8c12fa22573d9
     return this.props.startDate.getDay();
   }
 
@@ -163,7 +166,7 @@ class Calendar extends Component {
           {this.renderWeekdays()}
         </View>
         <View style={styles.calendar_days}>
-          {this.renderWeeks(this.getStartDayIndex(), this.props.startDate.getDate(), this.getEndDate().getDate())}
+          {this.renderWeeks(this.props.startDate.getDate(), this.getEndDate().getDate())}
         </View>
       </View>
     );
