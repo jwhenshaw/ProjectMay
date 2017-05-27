@@ -43,7 +43,7 @@ class Button extends React.Component {
     /**
      * Color of the text (iOS), or background color of the button (Android)
      */
-    color: StyleSheet.ColorPropType,
+    color: PropTypes.string,
     /**
      * If true, disable all interactions for this component.
      */

@@ -9,9 +9,13 @@ class IndexComponent extends Component {
     super(props);
     this.state = {};
   }
+
+  onPressDate(date) {
+    console.log(date);
+  }
   render() {
     return (
-      <Calendar></Calendar>
+      <Calendar startDate={new Date(2017, 3, 8)} onPressDate={this.onPressDate}></Calendar>
     );
   }
 }
