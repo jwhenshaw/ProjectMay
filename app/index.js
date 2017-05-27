@@ -11,7 +11,7 @@ class IndexComponent extends Component {
   }
   render() {
     return (
-      <Calendar></Calendar>
+      <Calendar startDate={new Date()}></Calendar>
     );
   }
 }

@@ -41,14 +41,22 @@ const styles = StyleSheet.create({
   },
   day: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
     paddingTop: 17,
     paddingBottom: 17,
     margin: 2
   },
   day_text: {
     textAlign: 'center',
-    color: '#A9A9A9',
+    fontSize: 15
+  },
+  day_palce_holder: {
+    flex: 1,
+    paddingTop: 17,
+    paddingBottom: 17,
+    margin: 2
+  },
+  day_place_holder_text: {
+    textAlign: 'center',
     fontSize: 15
   }
 });
