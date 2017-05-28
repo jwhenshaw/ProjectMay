@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {AppRegistry, ListView, TextInput, Text, View} from 'react-native';
 
 import SearchContainer from './routes/search/index';
-import Calendar from './components/calendar/index';
+import { CalendarPeriod } from './components/calendar/index';
 
 class IndexComponent extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class IndexComponent extends Component {
   }
   render() {
     return (
-      <Calendar startDate={new Date(2017, 3, 8)} onPressDate={this.onPressDate}></Calendar>
+      <CalendarPeriod startDate={new Date()} endDate={new Date(2017, 8, 1)} onSelectValidDate={this.onPressDate}></CalendarPeriod>
     );
   }
 }
