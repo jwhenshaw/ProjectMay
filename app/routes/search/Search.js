@@ -5,6 +5,8 @@ import styles from './styles';
 
 import DepartureSelector from './DepartureSelector';
 import DestinationSelector from './DestinationSelector';
+import DepartureDateSelector from './DepartureDateSelector';
+import ReturnDateSelector from './ReturnDateSelector';
 
 class Search extends Component {
   constructor(props) {
@@ -20,18 +22,28 @@ class Search extends Component {
     console.log(obj);
   }
 
+  onDepartureDateSet(date) {
+    console.log(date);
+  }
+
+  onReturnDateSet(date) {
+    console.log(date);
+  }
+
   render() {
-    const staticDepartureList = [
-      {
-        label: 'Static1 (ST1)'
-      }, {
-        label: "Static2 (ST2)"
-      }
-    ];
+    const departureStartDate = new Date();
+    let tempDate = new Date();
+    tempDate.setFullYear(departureStartDate.getFullYear()+1);
+    const endDate = new Date(tempDate.getTime());
+    departureStartDate.setDate(departureStartDate.getDate()+1);
+    var returnStartDate = new Date(departureStartDate.getTime());
+    returnStartDate.setDate(departureStartDate.getDate()+1);
     return (
       <View style={styles.searchContainer}>
-        <DepartureSelector staticOptionArr={[{label: "tempppppp (TEST)"}]} onSet={this.onDepartureSet}></DepartureSelector>
-        <DestinationSelector staticOptionArr={[{label: "desitnation (TEST)"}]} onSet={this.onDestinationSet}></DestinationSelector>
+        {/* <DepartureSelector style={styles.departure} staticOptionArr={[{label: "tempppppp (TEST)"}]} onSet={this.onDepartureSet}></DepartureSelector> */}
+        {/* <DestinationSelector style={styles.destination} staticOptionArr={[{label: "desitnation (TEST)"}]} onSet={this.onDestinationSet}></DestinationSelector> */}
+        <DepartureDateSelector style={{height: 100, width:100}} date={new Date()} startDate={departureStartDate} endDate={endDate} onSelect={this.onDepartureDateSet}></DepartureDateSelector>
+        {/* <ReturnDateSelector style={styles.departure_date} startDate={returnStartDate} endDate={endDate} onSelect={this.onReturnDateSet}></ReturnDateSelector> */}
       </View>
     );
   }

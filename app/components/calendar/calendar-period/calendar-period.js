@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, ScrollView} from 'react-native';
+import {Text, ListView} from 'react-native';
 import PropTypes from 'prop-types';
 import {styles} from './index';
 import Calendar from '../index';
@@ -8,11 +8,17 @@ class CalendarPeriod extends Component {
 
   constructor(props) {
     super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(this.renderCalendars(this.props.startDate, this.props.endDate))
+    };
+    console.log(this.state.dataSource);
   }
 
   props : {
     startDate: Date,
-    endDate: Date
+    endDate: Date,
+    onSelectValidDate: () => {}
   }
 
   static propTypes = {
@@ -20,6 +26,10 @@ class CalendarPeriod extends Component {
     endDate: PropTypes.object.isRequired,
     onSelectValidDate: PropTypes.func.isRequired
   }
+
+  _onPress = (date) => {
+    console.log(date);
+  };
 
   /**
    * Produce aray of dates, monthly intervals, from start date to end date.
@@ -39,25 +49,23 @@ class CalendarPeriod extends Component {
   }
 
   renderCalendars(startDate, endDate) {
-    var dateArray = this.getDateArray(startDate, endDate);
-    console.log(dateArray);
-    return dateArray.map((date) => {
-      return (
-        <Calendar key={date.getTime()} startDate={date} onPressDate={this.onPressDate}></Calendar>
-      );
-    });
+    return this.getDateArray(startDate, endDate);
   }
 
-  onPressDate(date) {
-    console.log(date);
-  }
+  _renderItem = ({date}) => (
+    <Calendar key={date.getTime()} startDate={date} onPressDate={this._onPress}></Calendar>
+  );
 
   render() {
     return (
-      <ScrollView>
-        {this.renderCalendars(this.props.startDate, this.props.endDate)}
-      </ScrollView>
+      <Calendar key={new Date().getTime} startDate={new Date()} onPressDate={this._onPress}></Calendar>
     );
+    // return (
+    //   <ListView dataSource={this.state.dataSource}
+    //     initialListSize={2}
+    //     renderRow={(data) => {return (<Calendar key={date.getTime()} startDate={date} onPressDate={this._onPress}/>)}}
+    //   />
+    // );
   }
 
 }

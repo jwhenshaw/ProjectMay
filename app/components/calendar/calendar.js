@@ -58,6 +58,10 @@ class Calendar extends Component {
     return new Date(y, m+1, 0);
   }
 
+  _onPress = (value) => {
+    this.props.onPressDate(date);
+  }
+
   /**
    * index of month of the year, jan = 0, feb = 1 ..etc
    * return int
@@ -83,10 +87,7 @@ class Calendar extends Component {
   }
 
   renderWeeks(startDayIndex, start, end) {
-    var offset = [];
-    if (start != 1) { //calc offset
-      offset = Array(startDayIndex).join(".").split(".");
-    }
+    var offset = new Array(startDayIndex).join(".").split(".");
     let days = range(start, end+1);
     days = offset.concat(days);
     let groupedDays = this.getWeeksArray(days);
@@ -99,12 +100,6 @@ class Calendar extends Component {
     });
   }
 
-  handleDayPress(value) {
-    var date = this.props.startDate;
-    date.setDate(value);
-    this.props.onPressDate(date);
-  }
-
   renderDays(weekDays) {
     return weekDays.map((day, index) => {
       const displayButton = <Button title={ day.toString() }
@@ -112,7 +107,7 @@ class Calendar extends Component {
         color={ "#e3dddd" }
         styles={{button: styles.day, text: styles.day_text}}
         noDefaultStyles={true}
-        onPress={() => this.handleDayPress(day)}
+        onPress={this._onPress}
         />;
       const placeHolder = <Button title={day.toString()}
         key={index}
