@@ -1,22 +1,21 @@
 import React, {Component} from 'react';
-import {Text, ListView} from 'react-native';
+import {View} from 'react-native';
 import PropTypes from 'prop-types';
 import {styles} from './index';
 import Calendar from '../index';
 
 /*
- * This class has rendering issues. Try optimising or moving native.
- * twas a good class :(
-*/
-class CalendarPeriod extends Component {
+ * It appears this has render issues as well which suggests it must be the
+ * Calendar component. But not sure how to improve that...
+ */
+class CalendarRange extends Component {
 
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(this.renderCalendars(this.props.startDate, this.props.endDate))
+      dateArray: this.getDateArray(this.props.startDate, this.props.endDate),
+      dateArrIndex: 0
     };
-    console.log(this.state.dataSource);
   }
 
   props : {
@@ -52,23 +51,31 @@ class CalendarPeriod extends Component {
     return dateArray;
   }
 
-  renderCalendars(startDate, endDate) {
-    return this.getDateArray(startDate, endDate);
-  }
+  nextDate = () => {
+    this.setState({
+      dateArrIndex: this.state.dateArrIndex+1
+    });
+  };
 
-  _renderItem = (date) => (
-    <Calendar key={date.getTime()} startDate={date} onPressDate={this._onPress}></Calendar>
-  );
+  prevDate = () => {
+    this.setState({
+      dateArrIndex: this.state.dateArrIndex-1
+    });
+  };
 
   render() {
+    const date = this.state.dateArray[this.state.dateArrIndex];
+    console.log(date);
     return (
-      <ListView dataSource={this.state.dataSource}
-        initialListSize={2}
-        renderRow={this._renderItem}
-      />
+      <View>
+        <View></View>
+        <View>
+          <Calendar key={date.getTime()} startDate={date} onPressDate={this.props.onSelectValidDate}/>
+        </View>
+      </View>
     );
   }
 
 }
 
-export default CalendarPeriod;
+export default CalendarRange;

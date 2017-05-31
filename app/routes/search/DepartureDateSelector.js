@@ -59,7 +59,7 @@ class DepartureDateSelector extends Component {
       </TouchableWithoutFeedback>
     );
     var t1 = performance.now();
-    console.log(`time taken to render modal: ${t1-t0}`);
+    console.log(`time taken to render modal: ${t1-t0} ms`);
     return temp;
   }
 
