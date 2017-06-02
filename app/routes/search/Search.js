@@ -14,6 +14,10 @@ class Search extends Component {
     this.state = {};
   }
 
+  props: {
+
+  }
+
   onDepartureSet(obj) {
     console.log(obj);
   }
@@ -40,10 +44,10 @@ class Search extends Component {
     returnStartDate.setDate(departureStartDate.getDate()+1);
     return (
       <View style={styles.searchContainer}>
-        {/* <DepartureSelector style={styles.departure} staticOptionArr={[{label: "tempppppp (TEST)"}]} onSet={this.onDepartureSet}></DepartureSelector> */}
-        {/* <DestinationSelector style={styles.destination} staticOptionArr={[{label: "desitnation (TEST)"}]} onSet={this.onDestinationSet}></DestinationSelector> */}
-        <DepartureDateSelector style={{height: 100, width:100}} date={new Date()} startDate={departureStartDate} endDate={endDate} onSelect={this.onDepartureDateSet}></DepartureDateSelector>
-        {/* <ReturnDateSelector style={styles.departure_date} startDate={returnStartDate} endDate={endDate} onSelect={this.onReturnDateSet}></ReturnDateSelector> */}
+        <DepartureSelector style={styles.departure} staticOptionArr={[{label: "tempppppp (TEST)"}]} onSet={this.onDepartureSet}></DepartureSelector>
+        <DestinationSelector style={styles.destination} staticOptionArr={[{label: "desitnation (TEST)"}]} onSet={this.onDestinationSet}></DestinationSelector>
+        <DepartureDateSelector style={{height: 100, width:100}} date={departureStartDate} startDate={departureStartDate} endDate={endDate} onSelect={this.onDepartureDateSet}></DepartureDateSelector>
+        <ReturnDateSelector style={styles.departure_date} date={returnStartDate} startDate={returnStartDate} endDate={endDate} onSelect={this.onReturnDateSet}></ReturnDateSelector>
       </View>
     );
   }

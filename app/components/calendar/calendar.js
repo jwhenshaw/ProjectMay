@@ -58,7 +58,7 @@ class Calendar extends Component {
     return new Date(y, m+1, 0);
   }
 
-  _onPress = (value) => {
+  _onPress = (date) => {
     this.props.onPressDate(date);
   }
 

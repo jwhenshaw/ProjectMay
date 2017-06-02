@@ -43,8 +43,7 @@ class DepartureDateSelector extends Component {
   }
 
   renderModal() {
-    var t0 = performance.now();
-    const temp = (
+    return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Modal onRequestClose={this.toggleModal} transparent={true} style={styles.modalContainer}>
           <View style={styles.modalHeader}>
@@ -58,9 +57,6 @@ class DepartureDateSelector extends Component {
         </Modal>
       </TouchableWithoutFeedback>
     );
-    var t1 = performance.now();
-    console.log(`time taken to render modal: ${t1-t0} ms`);
-    return temp;
   }
 
   renderTextDisplay() {

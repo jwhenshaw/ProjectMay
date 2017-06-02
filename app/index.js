@@ -12,6 +12,7 @@ class IndexComponent extends Component {
   onPressDate(date) {
     console.log(date);
   }
+
   render() {
     return (
       <SearchContainer></SearchContainer>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, ListView} from 'react-native';
+import {Text, FlatList} from 'react-native';
 import PropTypes from 'prop-types';
 import {styles} from './index';
 import Calendar from '../index';
@@ -12,9 +12,8 @@ class CalendarPeriod extends Component {
 
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(this.renderCalendars(this.props.startDate, this.props.endDate))
+      dataSource: this.renderCalendars(this.props.startDate, this.props.endDate)
     };
     console.log(this.state.dataSource);
   }
@@ -56,15 +55,14 @@ class CalendarPeriod extends Component {
     return this.getDateArray(startDate, endDate);
   }
 
-  _renderItem = (date) => (
-    <Calendar key={date.getTime()} startDate={date} onPressDate={this._onPress}></Calendar>
+  _renderItem = ({item}) => (
+    <Calendar key={item.getTime()} startDate={item} onPressDate={() => {this._onPress}}></Calendar>
   );
 
   render() {
     return (
-      <ListView dataSource={this.state.dataSource}
-        initialListSize={2}
-        renderRow={this._renderItem}
+      <FlatList data={this.state.dataSource}
+        renderItem={this._renderItem}
       />
     );
   }

@@ -64,8 +64,6 @@ class CalendarRange extends Component {
   };
 
   render() {
-    const date = this.state.dateArray[this.state.dateArrIndex];
-    console.log(date);
     return (
       <View>
         <View></View>
