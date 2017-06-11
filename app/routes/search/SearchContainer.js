@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Search} from './index'
+import { connect } from 'react-redux';
+import { Search } from './index'
 
 
 class SearchContainer extends Component {
@@ -9,7 +10,8 @@ class SearchContainer extends Component {
     };
   }
 
-  handleInput(val) {
+  handleInput(key, val) {
+
   }
 
   render() {
@@ -21,4 +23,11 @@ class SearchContainer extends Component {
   }
 }
 
-export default SearchContainer;
+const mapStateToProps = (state/*,props*/) => {
+  return {
+    search: state.search
+  }
+};
+const ConnectedSearchContainer =  connect(mapStateToProps)(SearchContainer);
+
+export default ConnectedSearchContainer;
