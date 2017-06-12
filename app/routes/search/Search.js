@@ -54,7 +54,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  handleInput: PropTypes.func.isRequired
+  onSetValue: PropTypes.func.isRequired
 }
 
 export default Search;

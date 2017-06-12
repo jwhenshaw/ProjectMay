@@ -8,4 +8,8 @@ var reducer = combineReducers({
   search: searchReducer
 });
 
+export {
+  searchReducer,
+  userReducer
+}
 export default reducer;
