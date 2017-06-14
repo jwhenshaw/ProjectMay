@@ -1,4 +1,4 @@
-package com.projectmay;
+package com.projectjune;
 
 import android.app.Application;
 

@@ -7,7 +7,7 @@ class SearchContainer extends Component {
 
   render() {
     return (
-      <Search {...this.props}></Search>
+      <Search>search container</Search>
     )
   }
 }
