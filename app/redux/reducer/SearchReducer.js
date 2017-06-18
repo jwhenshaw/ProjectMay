@@ -1,6 +1,6 @@
-import {List, Map} from 'immutable';
+import { List, Map } from 'immutable';
 
-const searchReducer = function(state = Map(), action) {
+const searchReducer = function(state = Map({flight: Map()}), action) {
   if (action.vertical) {
     let vertical = action.vertical.toLowerCase();
     switch (vertical) {

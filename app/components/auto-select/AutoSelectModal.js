@@ -21,7 +21,6 @@ class AutoSelectModal extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     });
     this.state = {
-      selected: this.props.value || "",
       listDataSource: this.ds.cloneWithRows(this.props.staticData)
     };
 
@@ -31,7 +30,6 @@ class AutoSelectModal extends Component {
   }
 
   onPressOption(option) {
-    console.log(option);
     this.props.handleOptionSelect(option);
   }
 
@@ -82,8 +80,8 @@ class AutoSelectModal extends Component {
           <View style={styles.modalMainContainer}>
             <TextInput onChangeText={(text) => {
               this.handleInput(text)
-            }} placeholder={this.props.placeholder}>
-              {this.state.selected.label}
+            }} placeholder={this.props.value}>
+              {this.props.value}
             </TextInput>
             <ListView enableEmptySections={true} dataSource={this.state.listDataSource} renderRow={(option) => {
               return (
@@ -102,8 +100,7 @@ AutoSelectModal.propTypes = {
   dataSourceCallback: PropTypes.func,
   handleClose: PropTypes.func.isRequired,
   handleOptionSelect: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.object
+  value: PropTypes.string
 };
 
 export default AutoSelectModal;

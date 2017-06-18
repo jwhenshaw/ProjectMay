@@ -1,4 +1,4 @@
-export function setFlightDeparture(value) {
+export const setFlightDeparture = value => {
   return {
     type: 'SET_DEPARTURE',
     vertical: 'FLIGHT',
@@ -6,7 +6,7 @@ export function setFlightDeparture(value) {
   }
 }
 
-export function setFlightDestination(value) {
+export const setFlightDestination = value => {
   return {
     type: 'SET_DESTINATION',
     vertical: 'FLIGHT',
@@ -14,7 +14,7 @@ export function setFlightDestination(value) {
   }
 }
 
-export function setFlightDepartureDate(value) {
+export const setFlightDepartureDate = value => {
   return {
     type: 'SET_DEPARTURE_DATE',
     vertical: 'FLIGHT',
@@ -22,7 +22,7 @@ export function setFlightDepartureDate(value) {
   }
 }
 
-export function setFlightReturnDate(value) {
+export const setFlightReturnDate = value => {
   return {
     type: 'SET_RETURN_DATE',
     vertical: 'FLIGHT',

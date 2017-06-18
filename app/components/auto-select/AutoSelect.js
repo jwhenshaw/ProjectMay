@@ -11,7 +11,6 @@ export class AutoSelect extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentValue: this.props.value,
       showModal: false
     };
     this.onPressSelect = this.onPressSelect.bind(this);
@@ -33,15 +32,14 @@ export class AutoSelect extends Component {
   }
 
   handleSelect(selected) {
-    console.log(selected);
     this.handleSuggestClose();
-    this.setState({'currentValue': selected});
+    this.props.onSelect(selected);
   }
 
   renderAutoSelect() {
     if (this.state.showModal) {
       return (
-        <AutoSelectModal value={this.state.currentValue} placeholder={this.props.placeholder}
+        <AutoSelectModal value={this.props.value} placeholder={this.props.placeholder}
           staticData={this.props.staticData || []} dataSourceCallback={this.props.dataCallback}
           handleClose={this.handleSuggestClose} handleOptionSelect={this.handleSelect}></AutoSelectModal>
       );
@@ -54,9 +52,7 @@ export class AutoSelect extends Component {
             borderBottomColor: 'grey',
             fontSize: 25
           }} onPress={this.onPressSelect}>
-            {this.state.currentValue
-              ? this.state.currentValue.label
-              : this.props.placeholder}
+            {this.props.value}
           </Text>
         </TouchableHighlight>
       );
@@ -75,8 +71,8 @@ export class AutoSelect extends Component {
 AutoSelect.propTypes = {
   staticData: PropTypes.array,
   dataCallback: PropTypes.func,
-  onSet: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired
+  onSelect: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 }
 
 export default AutoSelect;

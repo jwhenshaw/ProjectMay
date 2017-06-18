@@ -17,7 +17,7 @@ class Application extends Component {
   render() {
     return (
       <Provider store={store}>
-        <SearchContainer>ggggggg</SearchContainer>
+        <SearchContainer></SearchContainer>
       </Provider>
     );
   }
