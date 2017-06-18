@@ -15,6 +15,12 @@ class Search extends Component {
   }
 
   render() {
+    if(this.props.search.get('departure') !== undefined){
+      var departure = this.props.search.get('departure').label;
+    }
+    if(this.props.search.get('destination') !== undefined){
+      var destination = this.props.search.get('destination').label;
+    }
     //TODO move out logic
     const departureStartDate = new Date();
     let tempDate = new Date();
@@ -25,10 +31,32 @@ class Search extends Component {
     returnStartDate.setDate(departureStartDate.getDate()+1);
     return (
       <View style={styles.searchContainer}>
-        <DepartureSelector style={styles.departure} staticOptionArr={[{label: "tempppppp (TEST)"}]} onSelect={this.props.setFlightDeparture} ></DepartureSelector>
-        <DestinationSelector style={styles.destination} staticOptionArr={[{label: "desitnation (TEST)"}]} onSelect={this.props.setFlightDeparture}></DestinationSelector>
-        <DepartureDateSelector style={{height: 100, width:100}} date={departureStartDate} startDate={departureStartDate} endDate={endDate} onSelect={this.props.setFlightDeparture}></DepartureDateSelector>
-        <ReturnDateSelector style={styles.departure_date} date={returnStartDate} startDate={returnStartDate} endDate={endDate} onSelect={this.props.setFlightDeparture}></ReturnDateSelector>
+        <DepartureSelector
+          style={styles.departure}
+          value={departure}
+          staticOptionArr={[{label: "tempppppp (TEST)"}]}
+          onSelect={this.props.setFlightDeparture} >
+        </DepartureSelector>
+        <DestinationSelector
+          style={styles.destination}
+          value={destination}
+          staticOptionArr={[{label: "desitnation (TEST)"}]}
+          onSelect={this.props.setFlightDestination}>
+        </DestinationSelector>
+        <DepartureDateSelector
+          style={styles.departure_date}
+          date={departureStartDate}
+          startDate={departureStartDate}
+          endDate={endDate}
+          onSelect={this.props.setFlightDeparture}>
+        </DepartureDateSelector>
+        <ReturnDateSelector
+          style={styles.return_date}
+          date={returnStartDate}
+          startDate={returnStartDate}
+          endDate={endDate}
+          onSelect={this.props.setFlightDeparture}>
+        </ReturnDateSelector>
       </View>
     );
   }

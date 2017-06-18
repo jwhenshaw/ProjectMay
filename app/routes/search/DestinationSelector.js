@@ -16,24 +16,21 @@ class DestinationSelector extends React.Component {
     return this.sugestionService.fetchSuggestions(value);
   }
 
-  handleSelect(selectedObj) {
-    console.log(`selected: ${selectedObj.label}`);
-  }
-
   render() {
     return (
       <AutoSelect
         staticData={this.props.staticOptionArr || []}
         dataCallback={this.fetchSuggestions}
-        onSet={this.handleSelect}
-        placeholder="Destination.."
-      ></AutoSelect>
+        onSelect={this.props.onSelect}
+        value={this.props.value}
+        placeholder="Going to.."></AutoSelect>
     );
   }
 }
 
 DestinationSelector.PropTypes = {
-  onSet: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  value: PropTypes.string,
   staticOptionArr: PropTypes.array
 };
 

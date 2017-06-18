@@ -23,7 +23,8 @@ class DepartureSelector extends React.Component {
         staticData={this.props.staticOptionArr || []}
         dataCallback={this.fetchSuggestions}
         onSelect={this.props.onSelect}
-        value={this.props.value ? this.props.value : "Departing from.."}
+        value={this.props.value}
+        placeholder="Leaving from.."
       ></AutoSelect>
     );
   }

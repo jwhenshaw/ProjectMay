@@ -80,7 +80,7 @@ class AutoSelectModal extends Component {
           <View style={styles.modalMainContainer}>
             <TextInput onChangeText={(text) => {
               this.handleInput(text)
-            }} placeholder={this.props.value}>
+            }} placeholder={this.props.placeholder}>
               {this.props.value}
             </TextInput>
             <ListView enableEmptySections={true} dataSource={this.state.listDataSource} renderRow={(option) => {
@@ -100,6 +100,7 @@ AutoSelectModal.propTypes = {
   dataSourceCallback: PropTypes.func,
   handleClose: PropTypes.func.isRequired,
   handleOptionSelect: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
   value: PropTypes.string
 };
 

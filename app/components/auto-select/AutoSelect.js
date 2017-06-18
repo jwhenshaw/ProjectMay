@@ -47,12 +47,14 @@ export class AutoSelect extends Component {
       return (
         <TouchableHighlight>
           <Text style={{
-            margin: (10, 20),
-            borderBottomWidth: 1,
-            borderBottomColor: 'grey',
-            fontSize: 25
-          }} onPress={this.onPressSelect}>
-            {this.props.value}
+              margin: (10, 20),
+              borderBottomWidth: 1,
+              borderBottomColor: 'grey',
+              fontSize: 25
+            }}
+          onPress={this.onPressSelect}
+          >
+            {this.props.value || this.props.placeholder}
           </Text>
         </TouchableHighlight>
       );
@@ -72,7 +74,8 @@ AutoSelect.propTypes = {
   staticData: PropTypes.array,
   dataCallback: PropTypes.func,
   onSelect: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  placeholder: PropTypes.string,
+  value: PropTypes.string
 }
 
 export default AutoSelect;
